@@ -60,6 +60,11 @@ def take_pic():
     pics_taken += 1
     camera.capture(os.path.join('pics', 'image_' + str(pics_taken) + '.jpg'), use_video_port = True)
     prev_pic = pygame.image.load(os.path.join('pics', 'image_' + str(pics_taken) + '.jpg'))
+    if(pics_taken > max_pics):
+        print "maximum picture limit has been reached"
+        print "making movie"
+        make_movie()
+
 
 def delete_pic():
     """Doesn't actually delete the last picture, but the preview will 
@@ -89,6 +94,7 @@ def update_display():
         screen.blit(prev_pic, (0, 0))
         #screen.blit(banner_fix_custom, (0,0))
     play_clock.tick(30)
+    print "Picture Number " + str(pics_taken) + " of " + str(max_pics)
     #display the total pics taken
     main_surface=pygame.display.get_surface()
     font=pygame.font.Font(None,30)
@@ -178,7 +184,7 @@ def main():
                     take_pic()
                 elif event.key == pygame.K_BACKSPACE:
                     delete_pic()
-                elif event.key == pygame.K_RETURN or (pics_taken > max_pics):
+                elif event.key == pygame.K_RETURN:
                     make_movie()
                 elif event.key == pygame.K_TAB:
                     camera.preview_alpha = change_alpha()
