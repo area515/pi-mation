@@ -45,10 +45,13 @@ Once installed you can clone the Pi-Mation repository with the git clone command
     cd ~
     git clone https://github.com/russb78/pi-mation.git
 
-Now you can enter the pi-mation sub-directory and run pi-mation.py with the following commands:
+Now you can enter the pi-mation sub-directory, run the setup, and run pi-mation.sh with the following commands:
 
-    cd pi-mation/pi-mation
-    python pi-mation.py
+    cd pi-mation
+    chmod +x setup.sh
+    ./setup.sh
+    cd pi-mation
+    ./pi-mation.sh
 
 Alternatively you could run pi-mation.py from IDLE or a text editor / IDE like Geany.
 
